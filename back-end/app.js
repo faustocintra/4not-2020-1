@@ -26,4 +26,7 @@ app.use('/teste', teste)
 const fornecedor = require('./routes/fornecedor')
 app.use('/fornecedor', fornecedor)
 
+const produto = require('./routes/produto')
+app.use('/produto', produto)
+
 module.exports = app;
