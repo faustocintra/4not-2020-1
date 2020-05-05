@@ -29,4 +29,10 @@ app.use('/fornecedor', fornecedor)
 const produto = require('./routes/produto')
 app.use('/produto', produto)
 
+const cliente = require('./routes/cliente')
+app.use('/cliente', cliente)
+
+const venda = require('./routes/venda')
+app.use('/venda', venda)
+
 module.exports = app;
