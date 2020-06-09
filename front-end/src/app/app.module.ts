@@ -8,17 +8,21 @@ import { MaterialModule } from './material/material.module';
 import { MainToolbarComponent } from './ui/main-toolbar/main-toolbar.component';
 import { MainMenuComponent } from './ui/main-menu/main-menu.component';
 import { MainFooterComponent } from './ui/main-footer/main-footer.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FornecedorListComponent } from './fornecedor/fornecedor-list/fornecedor-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainToolbarComponent,
     MainMenuComponent,
-    MainFooterComponent
+    MainFooterComponent,
+    FornecedorListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule
   ],
