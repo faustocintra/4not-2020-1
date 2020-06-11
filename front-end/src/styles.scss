@@ -4,3 +4,29 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+#container {
+   padding: 20px 38px;
+}
+
+.mat-table {
+   width: 100%;
+}
+
+/* Ocultando por padrão os botões das tabelas de dados */
+.mat-row {
+
+   button {
+      visibility: hidden;
+   }
+
+   &:hover {
+      
+      filter: brightness(110%);
+
+      button {
+         visibility: visible;
+      }
+   }
+
+}
