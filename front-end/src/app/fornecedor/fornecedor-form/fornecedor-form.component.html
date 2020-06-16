@@ -1,0 +1,20 @@
+<h1>{{ title }}</h1>
+
+<form class="std-form" #f="ngForm">
+
+   <mat-form-field>
+      <mat-label>Razão Social</mat-label>
+      <input matInput [(ngModel)]="fornecedor.razao_social" name="razao_social" required placeholder="Informe a razão social da empresa">
+   </mat-form-field>
+
+   <mat-form-field>
+      <mat-label>Nome Fantasia</mat-label>
+      <input matInput [(ngModel)]="fornecedor.nome_fantasia" name="nome_fantasia" placeholder="Informe o nome fantasia (opcional)">
+   </mat-form-field>
+
+   <mat-form-field>
+      <mat-label>CNPJ</mat-label>
+      <input matInput [(ngModel)]="fornecedor.cnpj" name="cnpj" required placeholder="Informe o CNPJ empresa" mask="00.000.000/0000-00">
+   </mat-form-field>
+
+</form>

@@ -16,7 +16,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 /* Ocultando por padrão os botões das tabelas de dados */
 .mat-row {
 
-   button {
+   .mat-raised-button {
       visibility: hidden;
    }
 
@@ -24,9 +24,32 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
       
       filter: brightness(110%);
 
-      button {
+      .mat-raised-button {
          visibility: visible;
       }
    }
 
+}
+
+.new-item-button-container {
+   margin-bottom: 20px;
+   text-align: right;
+
+   .mat-raised-button {
+      font-size: 120%;
+   }
+}
+
+.std-form {
+   
+   max-width: 80%;
+   margin: 0 auto;
+   
+   mat-form-field {
+      min-width: 150px;
+      max-width: 500px;
+      width: 100%;
+      margin-right: 30px;
+   }
+   
 }
