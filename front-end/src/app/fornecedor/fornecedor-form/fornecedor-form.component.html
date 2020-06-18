@@ -1,6 +1,6 @@
 <h1>{{ title }}</h1>
 
-<form class="std-form" #f="ngForm">
+<form class="std-form" #f="ngForm" (ngSubmit)="salvar(f)">
 
    <mat-form-field>
       <mat-label>Razão Social</mat-label>
@@ -16,5 +16,38 @@
       <mat-label>CNPJ</mat-label>
       <input matInput [(ngModel)]="fornecedor.cnpj" name="cnpj" required placeholder="Informe o CNPJ empresa" mask="00.000.000/0000-00">
    </mat-form-field>
+
+   <mat-form-field>
+      <mat-label>Inscrição Estadual</mat-label>
+      <input matInput [(ngModel)]="fornecedor.inscricao_estadual" name="inscricao_estadual" required placeholder="Informe a inscrição estadual da empresa">
+   </mat-form-field>
+
+   <mat-form-field>
+      <mat-label>Endereço</mat-label>
+      <textarea matInput [(ngModel)]="fornecedor.endereco" name="endereco" required placeholder="Informe o endereço da empresa" rows="4"></textarea>
+   </mat-form-field>
+
+   <mat-form-field>
+      <mat-label>Telefone</mat-label>
+      <mat-icon matPrefix>contact_phone</mat-icon>
+      <input matInput [(ngModel)]="fornecedor.telefone" name="telefone" required placeholder="Informe o telefone da empresa">
+   </mat-form-field>
+
+   <mat-form-field>
+      <mat-label>E-mail</mat-label>
+      <mat-icon matPrefix>contact_mail</mat-icon>
+      <input type="email" matInput [(ngModel)]="fornecedor.email" name="email" required placeholder="Informe o email da empresa">
+   </mat-form-field>
+
+   <mat-toolbar class="form-buttons">
+      <mat-toolbar-row>
+         <button mat-raised-button type="submit" color="accent">
+            Salvar
+         </button>
+         <button mat-raised-button type="button" (click)="voltar(f)">
+            Voltar
+         </button>
+      </mat-toolbar-row>
+   </mat-toolbar>
 
 </form>
