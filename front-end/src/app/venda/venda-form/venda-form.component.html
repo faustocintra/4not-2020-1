@@ -1,0 +1,77 @@
+<h1>{{ title }}</h1>
+
+<form class="std-form" #f="ngForm" (ngSubmit)="salvar(f)">
+
+   <mat-form-field>
+      <mat-label>Nº venda</mat-label>
+      <input matInput [(ngModel)]="venda.num_venda" name="razao_social" readonly>
+   </mat-form-field>
+
+   <mat-form-field>
+      <!--
+         O <mat-select> lista os dados de uma entidade para que seja possível
+         associar um deles relacionado a outra entidade.
+
+         No cabeçalho do <mat-select> colocamos a entidade que é o DESTINO
+         do relacionamento (a entidade à qual pertencem os dados do formulário).
+      -->
+      <mat-select placeholder="Selecione o cliente" required [(ngModel)]="venda.cliente" name="cliente">
+
+         <!--
+            No <mat-option> colocamos a entidade relacionada (aquela cujos dados
+            serão listados).
+            No atributo [value], será colocado sempre o _id da entidade relacionada.
+            Entre {{ }}, colocamos o que queremos que o usuário veja na listagem.
+            Quando o usuário fizer a seleção, o _id da entidade relacionada será
+            atribuído ao atributo indicado no ngModel da entidade de destino.
+         -->
+         <mat-option *ngFor="let cliente of clientes" [value]="cliente._id">
+            {{ cliente.nome }}
+         </mat-option>
+      </mat-select>
+   </mat-form-field>   
+
+   <mat-form-field>
+      <mat-label>Nome Fantasia</mat-label>
+      <input matInput [(ngModel)]="venda.nome_fantasia" name="nome_fantasia" placeholder="Informe o nome fantasia (opcional)">
+   </mat-form-field>
+
+   <mat-form-field>
+      <mat-label>CNPJ</mat-label>
+      <input matInput [(ngModel)]="venda.cnpj" name="cnpj" required placeholder="Informe o CNPJ empresa" mask="00.000.000/0000-00">
+   </mat-form-field>
+
+   <mat-form-field>
+      <mat-label>Inscrição Estadual</mat-label>
+      <input matInput [(ngModel)]="venda.inscricao_estadual" name="inscricao_estadual" required placeholder="Informe a inscrição estadual da empresa">
+   </mat-form-field>
+
+   <mat-form-field>
+      <mat-label>Endereço</mat-label>
+      <textarea matInput [(ngModel)]="venda.endereco" name="endereco" required placeholder="Informe o endereço da empresa" rows="4"></textarea>
+   </mat-form-field>
+
+   <mat-form-field>
+      <mat-label>Telefone</mat-label>
+      <mat-icon matPrefix>contact_phone</mat-icon>
+      <input matInput [(ngModel)]="venda.telefone" name="telefone" required placeholder="Informe o telefone da empresa">
+   </mat-form-field>
+
+   <mat-form-field>
+      <mat-label>E-mail</mat-label>
+      <mat-icon matPrefix>contact_mail</mat-icon>
+      <input type="email" matInput [(ngModel)]="venda.email" name="email" required placeholder="Informe o email da empresa">
+   </mat-form-field>
+
+   <mat-toolbar class="form-buttons">
+      <mat-toolbar-row>
+         <button mat-raised-button type="submit" color="accent">
+            Salvar
+         </button>
+         <button mat-raised-button type="button" (click)="voltar(f)">
+            Voltar
+         </button>
+      </mat-toolbar-row>
+   </mat-toolbar>
+
+</form>

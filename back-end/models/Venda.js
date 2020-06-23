@@ -1,3 +1,4 @@
+// @ts-nocheck
 const mongoose = require('mongoose')
 
 // ---> É necessário instalar: yarn add mongoose-sequence
