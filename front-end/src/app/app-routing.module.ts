@@ -1,9 +1,11 @@
+import { ItemVendaListComponent } from './item-venda/item-venda-list/item-venda-list.component';
 import { VendaFormComponent } from './venda/venda-form/venda-form.component';
 import { FornecedorFormComponent } from './fornecedor/fornecedor-form/fornecedor-form.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { FornecedorListComponent } from './fornecedor/fornecedor-list/fornecedor-list.component';
 import { VendaListComponent } from './venda/venda-list/venda-list.component';
+import { ItemVendaFormComponent } from './item-venda/item-venda-form/item-venda-form.component';
 
 const routes: Routes = [
   {
@@ -29,6 +31,18 @@ const routes: Routes = [
   {
     path: 'venda/:id',
     component: VendaFormComponent
+  },
+  {
+    path: 'item-venda',
+    component: ItemVendaListComponent
+  },
+  {
+    path: 'item-venda/novo',
+    component: ItemVendaFormComponent
+  },
+  {
+    path: 'item-venda/:id',
+    component: ItemVendaFormComponent
   }
 ];
 
