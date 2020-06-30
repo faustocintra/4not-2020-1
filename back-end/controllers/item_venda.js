@@ -34,12 +34,12 @@ controller.listar = async (req, res) => {
          .populate(
             // path: nome do campo a ser populado
             // select: lista de campos a serem exibidos separados por espaço
-            { path: 'produto', select: 'descricao data_validade fornecedor', populate: 'fornecedor' }
+            { path: 'produto', /* select: 'descricao data_validade fornecedor', */populate: 'fornecedor' }
          )
 
          res.send(lista) // HTTP 200 implícito
       }
-      catch {
+      catch (erro) {
          console.log(erro)
          res.status(500).send(erro)
       }
@@ -121,6 +121,23 @@ async function busca(req, res) {
       console.log(erro)
       res.status(500).send(erro)
    }
+}
+
+controller.filtrarVenda = async (req, res) => {
+   let id = req.params.id
+
+   try {
+      // Só os itens de venda de uma determinada venda
+      const lista = await ItemVenda.find({venda: id})
+         .populate('produto')
+         .populate('venda')
+      res.send(lista)
+   }
+   catch(erro) {
+      console.log(erro)
+      res.status(500).send(erro)
+   }
+
 }
 
 module.exports = controller

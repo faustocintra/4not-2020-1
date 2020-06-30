@@ -36,4 +36,8 @@ export class ItemVendaService {
     return this.http.get(this.apiUri + '/' + id).toPromise()
   }
 
+  filtrarVenda(id: string) {
+    return this.http.get(this.apiUri + '/venda/' + id).toPromise()
+  }
+
 }

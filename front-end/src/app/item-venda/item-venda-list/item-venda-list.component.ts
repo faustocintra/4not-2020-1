@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ItemVendaService } from '../item-venda.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
@@ -11,6 +11,9 @@ import { ConfirmDlgComponent } from 'src/app/ui/confirm-dlg/confirm-dlg.componen
 })
 export class ItemVendaListComponent implements OnInit {
 
+  // Recebendo um parâmetro do componente pai
+  @Input() venda : string = ''
+
   itensVenda : any = [] // Vetor vazio
 
   displayedColumns : string[] = ['venda', 'produto', 'quantidade', 'preco_unitario', 'desconto', 'acrescimo', 'preco_total', 'editar', 'excluir']
@@ -22,7 +25,13 @@ export class ItemVendaListComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
-    this.itensVenda = await this.ItemVendaSrv.listar()
+    // Se for passado o parâmetro venda pelo componente pai
+    if(this.venda != '') {
+      this.itensVenda = await this.ItemVendaSrv.filtrarVenda(this.venda)
+    }
+    else {
+      this.itensVenda = await this.ItemVendaSrv.listar()
+    }
     console.log(this.itensVenda)
   }
 
