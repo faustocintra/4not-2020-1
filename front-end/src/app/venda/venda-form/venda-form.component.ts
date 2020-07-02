@@ -1,9 +1,11 @@
+import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 import { VendaService } from '../venda.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { ClienteService } from 'src/app/cliente/cliente.service';
+import { ConfirmDlgComponent } from 'src/app/ui/confirm-dlg/confirm-dlg.component';
 
 @Component({
   selector: 'app-venda-form',
@@ -43,7 +45,8 @@ export class VendaFormComponent implements OnInit {
     private clienteSrv : ClienteService,
     private snackBar: MatSnackBar,
     private router: Router,
-    private actRoute: ActivatedRoute
+    private actRoute: ActivatedRoute,
+    private dialog: MatDialog
   ) { }
 
   async ngOnInit() {
@@ -73,7 +76,25 @@ export class VendaFormComponent implements OnInit {
   
   }
 
-  voltar(x) {
+  async voltar(form: NgForm) {
+    
+    let result = true;
+    console.log(form);
+    // form.dirty = formulário "sujo", não salvo (via código)
+    // form.touched = o conteúdo de algum campo foi alterado (via usuário)
+    if(form.dirty && form.touched) {
+      let dialogRef = this.dialog.open(ConfirmDlgComponent, {
+        width: '50%',
+        data: { question: 'Há dados não salvos. Deseja realmente voltar?' }
+      });
+
+      result = await dialogRef.afterClosed().toPromise();
+
+    }
+
+    if(result) {
+      this.router.navigate(['/venda']); // Retorna à listagem
+    }
 
   }
 
